@@ -1,26 +1,27 @@
-%define		kdeappsver	18.12.0
+%define		kdeappsver	18.12.1
 %define		qtver		5.9.0
 %define		kaname		akonadi-calendar
 Summary:	Akonadi Calendar
 Name:		ka5-%{kaname}
-Version:	18.12.0
+Version:	18.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	e0b7b3a05d0548d521b8c63026b11d8b
+# Source0-md5:	df98c58b61070d252761bcc3be997b4e
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
 BuildRequires:	Qt5Test-devel >= 5.9.0
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	gettext-devel
-BuildRequires:	ka5-akonadi-contacts-devel >= 18.12.0
-BuildRequires:	ka5-akonadi-devel >= 18.12.0
-BuildRequires:	ka5-kcalcore-devel >= 18.12.0
-BuildRequires:	ka5-kcalutils-devel >= 18.12.0
-BuildRequires:	ka5-kcontacts-devel >= 18.12.0
-BuildRequires:	ka5-kidentitymanagement-devel >= 18.12.0
+BuildRequires:	ka5-akonadi-contacts-devel >= %{kdeappsver}
+BuildRequires:	ka5-akonadi-devel >= %{kdeappsver}
+BuildRequires:	ka5-kcalcore-devel >= %{kdeappsver}
+BuildRequires:	ka5-kcalutils-devel >= %{kdeappsver}
+BuildRequires:	ka5-kcontacts-devel >= %{kdeappsver}
+BuildRequires:	ka5-kidentitymanagement-devel >= %{kdeappsver}
+BuildRequires:	ka5-kmailtransport-devel >= %{kdeappsver}
 BuildRequires:	kf5-extra-cmake-modules >= 5.53.0
 BuildRequires:	kf5-kcodecs-devel >= 5.51.0
 BuildRequires:	kf5-kdbusaddons-devel >= 5.51.0
