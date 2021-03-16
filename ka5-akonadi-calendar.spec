@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		akonadi-calendar
 Summary:	Akonadi Calendar
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	dae6424f253352054839351f41bb3ab5
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	669efd6c6f01ea3dd9bdfd1f389cf00b
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -18,13 +18,13 @@ BuildRequires:	cmake >= 2.8.12
 BuildRequires:	gettext-devel
 BuildRequires:	ka5-akonadi-contacts-devel >= %{kdeappsver}
 BuildRequires:	ka5-akonadi-devel >= %{kdeappsver}
-BuildRequires:	ka5-kcalcore-devel >= %{kdeappsver}
 BuildRequires:	ka5-kcalutils-devel >= %{kdeappsver}
-BuildRequires:	ka5-kcontacts-devel >= %{kdeappsver}
 BuildRequires:	ka5-kidentitymanagement-devel >= %{kdeappsver}
 BuildRequires:	ka5-kmailtransport-devel >= %{kdeappsver}
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcalendarcore-devel >= %{kframever}
 BuildRequires:	kf5-kcodecs-devel >= %{kframever}
+BuildRequires:	kf5-kcontacts-devel >= %{kframever}
 BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
 BuildRequires:	kf5-kiconthemes-devel >= %{kframever}
 BuildRequires:	kf5-kio-devel >= %{kframever}
@@ -82,12 +82,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-/etc/xdg/akonadi-calendar.categories
-/etc/xdg/akonadi-calendar.renamecategories
 %attr(755,root,root) %ghost %{_libdir}/libKF5AkonadiCalendar.so.5
 %attr(755,root,root) %{_libdir}/libKF5AkonadiCalendar.so.5.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi_serializer_kcalcore.so
 %{_datadir}/akonadi/plugins/serializer/akonadi_serializer_kcalcore.desktop
+%{_datadir}/qlogging-categories5/akonadi-calendar.categories
+%{_datadir}/qlogging-categories5/akonadi-calendar.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
