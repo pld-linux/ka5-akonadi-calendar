@@ -1,15 +1,15 @@
-%define		kdeappsver	21.04.2
+%define		kdeappsver	21.04.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		akonadi-calendar
 Summary:	Akonadi Calendar
 Name:		ka5-%{kaname}
-Version:	21.04.2
+Version:	21.04.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	3755f2b4acac909f67c87ef382c77f93
+# Source0-md5:	aedadf78c92db864d75747d90c047e54
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
