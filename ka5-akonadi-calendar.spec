@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	21.12.3
+%define		kdeappsver	22.04.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		akonadi-calendar
 Summary:	Akonadi Calendar
 Name:		ka5-%{kaname}
-Version:	21.12.3
+Version:	22.04.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	b67c74f378f5c9e63ece42a11cd38cfb
+# Source0-md5:	60af37e362fa9ca2c4176becc6cd9182
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -97,12 +97,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/akonadi/plugins/serializer/akonadi_serializer_kcalcore.desktop
 %{_datadir}/qlogging-categories5/akonadi-calendar.categories
 %{_datadir}/qlogging-categories5/akonadi-calendar.renamecategories
+/etc/xdg/autostart/org.kde.kalendarac.desktop
+%attr(755,root,root) %{_bindir}/kalendarac
+%{_datadir}/dbus-1/services/org.kde.kalendarac.service
+%{_datadir}/knotifications5/kalendarac.notifyrc
+%{_datadir}/qlogging-categories5/org_kde_kalendarac.categories
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF5/Akonadi/Calendar
-%{_includedir}/KF5/akonadi-calendar_version.h
-%{_includedir}/KF5/akonadi/calendar
 %{_libdir}/cmake/KF5AkonadiCalendar
 %{_libdir}/libKF5AkonadiCalendar.so
 %{_libdir}/qt5/mkspecs/modules/qt_AkonadiCalendar.pri
+%{_includedir}/KF5/AkonadiCalendar
