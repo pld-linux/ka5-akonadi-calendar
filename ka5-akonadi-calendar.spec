@@ -8,7 +8,7 @@
 Summary:	Akonadi Calendar
 Name:		ka5-%{kaname}
 Version:	22.04.2
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -31,6 +31,7 @@ BuildRequires:	kf5-kcontacts-devel >= %{kframever}
 BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
 BuildRequires:	kf5-kiconthemes-devel >= %{kframever}
 BuildRequires:	kf5-kio-devel >= %{kframever}
+BuildRequires:	kf5-knotifications-devel >= %{kframever}
 BuildRequires:	kf5-kwallet-devel >= %{kframever}
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
