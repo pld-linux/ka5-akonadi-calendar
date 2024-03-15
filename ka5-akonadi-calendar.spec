@@ -1,22 +1,22 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	24.01.95
+%define		kdeappsver	23.08.4
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		akonadi-calendar
 Summary:	Akonadi Calendar
 Name:		ka5-%{kaname}
-Version:	24.01.95
-Release:	0.1
+Version:	23.08.4
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	f3a52856f982f81cc77273cf659742b1
+Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	82872884fc5e37e52c67772ddfeda1e7
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Gui-devel >= 5.11.1
-BuildRequires:	Qt6Test-devel >= 5.9.0
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel >= 5.11.1
+BuildRequires:	Qt5Test-devel >= 5.9.0
 BuildRequires:	cmake >= 3.20
 BuildRequires:	gettext-devel
 BuildRequires:	ka5-akonadi-contacts-devel >= %{kdeappsver}
@@ -25,17 +25,17 @@ BuildRequires:	ka5-kcalutils-devel >= %{kdeappsver}
 BuildRequires:	ka5-kidentitymanagement-devel >= %{kdeappsver}
 BuildRequires:	ka5-kmailtransport-devel >= %{kdeappsver}
 BuildRequires:	ka5-messagelib-devel >= %{kdeappsver}
-BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
-BuildRequires:	kf6-kcalendarcore-devel >= %{kframever}
-BuildRequires:	kf6-kcodecs-devel >= %{kframever}
-BuildRequires:	kf6-kcontacts-devel >= %{kframever}
-BuildRequires:	kf6-kdbusaddons-devel >= %{kframever}
-BuildRequires:	kf6-kiconthemes-devel >= %{kframever}
-BuildRequires:	kf6-kio-devel >= %{kframever}
-BuildRequires:	kf6-knotifications-devel >= %{kframever}
-BuildRequires:	kf6-kwallet-devel >= %{kframever}
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcalendarcore-devel >= %{kframever}
+BuildRequires:	kf5-kcodecs-devel >= %{kframever}
+BuildRequires:	kf5-kcontacts-devel >= %{kframever}
+BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
+BuildRequires:	kf5-kiconthemes-devel >= %{kframever}
+BuildRequires:	kf5-kio-devel >= %{kframever}
+BuildRequires:	kf5-knotifications-devel >= %{kframever}
+BuildRequires:	kf5-kwallet-devel >= %{kframever}
 BuildRequires:	ninja
-BuildRequires:	qt6-build >= %{qtver}
+BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -91,21 +91,24 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi_serializer_kcalcore.so
+%{_datadir}/akonadi/plugins/serializer/akonadi_serializer_kcalcore.desktop
+%{_datadir}/qlogging-categories5/akonadi-calendar.categories
+%{_datadir}/qlogging-categories5/akonadi-calendar.renamecategories
 /etc/xdg/autostart/org.kde.kalendarac.desktop
 %attr(755,root,root) %{_bindir}/kalendarac
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiCalendar.so.*.*
-%ghost %{_libdir}/libKPim6AkonadiCalendar.so.6
-%attr(755,root,root) %{_libdir}/qt6/plugins/akonadi_serializer_kcalcore.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/org.kde.kcalendarcore.calendars/libakonadicalendarplugin.so
-%{_datadir}/akonadi/plugins/serializer/akonadi_serializer_kcalcore.desktop
 %{_datadir}/dbus-1/services/org.kde.kalendarac.service
-%{_datadir}/knotifications6/kalendarac.notifyrc
-%{_datadir}/qlogging-categories6/akonadi-calendar.categories
-%{_datadir}/qlogging-categories6/akonadi-calendar.renamecategories
-%{_datadir}/qlogging-categories6/org_kde_kalendarac.categories
+%{_datadir}/knotifications5/kalendarac.notifyrc
+%{_datadir}/qlogging-categories5/org_kde_kalendarac.categories
+%dir %{_libdir}/qt5/plugins/kf5/org.kde.kcalendarcore.calendars
+%attr(755,root,root) %{_libdir}/qt5/plugins/kf5/org.kde.kcalendarcore.calendars/libakonadicalendarplugin.so
+%ghost %{_libdir}/libKPim5AkonadiCalendar.so.5
+%attr(755,root,root) %{_libdir}/libKPim5AkonadiCalendar.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KPim6/AkonadiCalendar
-%{_libdir}/cmake/KPim6AkonadiCalendar
-%{_libdir}/libKPim6AkonadiCalendar.so
+%{_libdir}/qt5/mkspecs/modules/qt_AkonadiCalendar.pri
+%{_includedir}/KPim5/AkonadiCalendar
+%{_libdir}/cmake/KF5AkonadiCalendar
+%{_libdir}/cmake/KPim5AkonadiCalendar
+%{_libdir}/libKPim5AkonadiCalendar.so
